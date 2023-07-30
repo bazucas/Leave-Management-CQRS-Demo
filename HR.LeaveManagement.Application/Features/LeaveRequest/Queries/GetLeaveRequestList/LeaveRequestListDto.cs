@@ -1,7 +1,7 @@
 ﻿using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 using HR.LeaveManagement.Application.Models.Identity;
 
-namespace HR.LeaveManagement.Application.DTOs.LeaveRequest;
+namespace HR.LeaveManagement.Application.Features.LeaveRequest.Queries.GetLeaveRequestList;
 
 public class LeaveRequestListDto
 {
