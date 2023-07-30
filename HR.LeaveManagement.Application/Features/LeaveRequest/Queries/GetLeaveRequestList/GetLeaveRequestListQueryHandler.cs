@@ -16,7 +16,7 @@ public class GetLeaveRequestListQueryHandler : IRequestHandler<GetLeaveRequestLi
     {
         _leaveRequestRepository = leaveRequestRepository;
         _mapper = mapper;
-        this._userService = userService;
+        _userService = userService;
     }
 
     public async Task<List<LeaveRequestListDto>> Handle(GetLeaveRequestListQuery request, CancellationToken cancellationToken)
