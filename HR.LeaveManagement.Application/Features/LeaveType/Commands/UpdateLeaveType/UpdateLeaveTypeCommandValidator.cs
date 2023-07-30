@@ -33,7 +33,7 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
     private async Task<bool> LeaveTypeMustExist(int id, CancellationToken arg2)
     {
         var leaveType = await _leaveTypeRepository.GetByIdAsync(id);
-        return leaveType != null;
+        return leaveType is not null;
     }
 
     private async Task<bool> LeaveTypeNameUnique(UpdateLeaveTypeCommand command, CancellationToken token)
