@@ -197,12 +197,11 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Client : IClient
     {
-        private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<System.Text.Json.JsonSerializerOptions> _settings;
 
         public Client(System.Net.Http.HttpClient httpClient)
         {
-            _httpClient = httpClient;
+            HttpClient = httpClient;
             _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings);
         }
 
@@ -236,7 +235,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Auth/login");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -314,7 +313,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Auth/register");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -397,7 +396,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             }
             urlBuilder_.Length--;
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -471,7 +470,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveAllocations");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -563,7 +562,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveAllocations");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -663,7 +662,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveAllocations/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -741,7 +740,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveAllocations/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -828,7 +827,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             }
             urlBuilder_.Length--;
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -902,7 +901,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveRequests");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -994,7 +993,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveRequests");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1094,7 +1093,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveRequests/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1172,7 +1171,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveRequests/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1254,7 +1253,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveRequests/CancelRequest");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1350,7 +1349,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveRequests/UpdateApproval");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1446,7 +1445,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveTypes");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1520,7 +1519,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/LeaveTypes");
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1616,7 +1615,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveTypes/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1694,7 +1693,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveTypes/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
@@ -1794,7 +1793,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             urlBuilder_.Append("api/LeaveTypes/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
-            var client_ = _httpClient;
+            var client_ = HttpClient;
             var disposeClient_ = false;
             try
             {
