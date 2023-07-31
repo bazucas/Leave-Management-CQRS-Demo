@@ -16,7 +16,7 @@ public partial class Index
     [Inject]
     public IAuthenticationService AuthenticationService { get; set; }
 
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         await ((ApiAuthenticationStateProvider)AuthenticationStateProvider).GetAuthenticationStateAsync();
     }
