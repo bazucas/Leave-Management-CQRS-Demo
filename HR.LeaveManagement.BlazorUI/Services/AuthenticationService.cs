@@ -24,7 +24,7 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
             var authenticationResponse = await Client.LoginAsync(authenticationRequest);
             if (authenticationResponse.Token != string.Empty)
             {
-                await _localStorage.SetItemAsync("token", authenticationResponse.Token);
+                await LocalStorage.SetItemAsync("token", authenticationResponse.Token);
 
                 // Set claims in Blazor and login state
                 await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedIn();

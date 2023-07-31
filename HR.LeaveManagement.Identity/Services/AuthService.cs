@@ -30,7 +30,7 @@ public class AuthService : IAuthService
     {
         var user = await _userManager.FindByEmailAsync(request.Email);
 
-        if (user == null)
+        if (user is null)
         {
             throw new NotFoundException($"User with {request.Email} not found.", request.Email);
         }
@@ -115,5 +115,4 @@ public class AuthService : IAuthService
             signingCredentials: signingCredentials);
         return jwtSecurityToken;
     }
-
 }

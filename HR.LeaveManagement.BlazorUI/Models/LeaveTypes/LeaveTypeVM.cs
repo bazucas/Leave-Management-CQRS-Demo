@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace HR.LeaveManagement.BlazorUI.Models.LeaveTypes
 {
@@ -7,8 +6,7 @@ namespace HR.LeaveManagement.BlazorUI.Models.LeaveTypes
     {
         public int Id { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+        [Required] public string Name { get; set; } = string.Empty;
 
         [Required]
         [Display(Name = "Default Number Of Days")]

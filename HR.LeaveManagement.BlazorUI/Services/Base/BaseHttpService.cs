@@ -6,34 +6,33 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base;
 public class BaseHttpService
 {
     protected IClient Client;
-    protected readonly ILocalStorageService _localStorage;
+    protected readonly ILocalStorageService LocalStorage;
     public BaseHttpService(IClient client, ILocalStorageService localStorage)
     {
         Client = client;
-        _localStorage = localStorage;
+        LocalStorage = localStorage;
     }
 
     protected Response<Guid> ConvertApiExceptions<Guid>(ApiException ex)
     {
-        if (ex.StatusCode == 400)
+        return ex.StatusCode switch
         {
-            return new Response<Guid>() { Message = "Invalid data was submitted", ValidationErrors = ex.Response, Success = false };
-        }
-        else if (ex.StatusCode == 404)
-        {
-            return new Response<Guid>() { Message = "The record was not found.", Success = false };
-        }
-        else
-        {
-            return new Response<Guid>() { Message = "Something went wrong, please try again later.", Success = false };
-        }
+            400 => new Response<Guid>()
+            {
+                Message = "Invalid data was submitted",
+                ValidationErrors = ex.Response,
+                Success = false
+            },
+            404 => new Response<Guid>() { Message = "The record was not found.", Success = false },
+            _ => new Response<Guid>() { Message = "Something went wrong, please try again later.", Success = false }
+        };
     }
 
     protected async Task AddBearerToken()
     {
-        if (await _localStorage.ContainKeyAsync("token"))
+        if (await LocalStorage.ContainKeyAsync("token"))
             Client.HttpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", await _localStorage.GetItemAsync<string>("token"));
+                new AuthenticationHeaderValue("Bearer", await LocalStorage.GetItemAsync<string>("token"));
     }
 
 }
