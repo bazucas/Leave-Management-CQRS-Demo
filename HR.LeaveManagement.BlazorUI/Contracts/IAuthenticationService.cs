@@ -1,8 +1,11 @@
-﻿namespace HR.LeaveManagement.BlazorUI.Contracts;
+﻿using HR.LeaveManagement.BlazorUI.Services.Base;
 
-public interface IAuthenticationService
+namespace HR.LeaveManagement.BlazorUI.Contracts
 {
-    Task<bool> AuthenticateAsync(string email, string password);
-    Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password);
-    Task Logout();
+    public interface IAuthenticationService
+    {
+        Task<bool> AuthenticateAsync(string email, string password);
+        Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password);
+        Task Logout();
+    }
 }

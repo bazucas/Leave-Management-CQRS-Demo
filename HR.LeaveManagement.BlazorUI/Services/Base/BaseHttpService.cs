@@ -1,38 +1,40 @@
-﻿using System.Net.Http.Headers;
-using Blazored.LocalStorage;
+﻿using Blazored.LocalStorage;
+using System.Net.Http.Headers;
 
-namespace HR.LeaveManagement.BlazorUI.Services.Base;
-
-public class BaseHttpService
+namespace HR.LeaveManagement.BlazorUI.Services.Base
 {
-    protected IClient Client;
-    protected readonly ILocalStorageService LocalStorage;
-    public BaseHttpService(IClient client, ILocalStorageService localStorage)
+    public class BaseHttpService
     {
-        Client = client;
-        LocalStorage = localStorage;
-    }
-
-    protected Response<Guid> ConvertApiExceptions<Guid>(ApiException ex)
-    {
-        return ex.StatusCode switch
+        protected IClient _client;
+        protected readonly ILocalStorageService _localStorage;
+        public BaseHttpService(IClient client, ILocalStorageService localStorage)
         {
-            400 => new Response<Guid>()
+            _client = client;
+            _localStorage = localStorage;
+        }
+
+        protected Response<Guid> ConvertApiExceptions<Guid>(ApiException ex)
+        {
+            if (ex.StatusCode == 400)
             {
-                Message = "Invalid data was submitted",
-                ValidationErrors = ex.Response,
-                Success = false
-            },
-            404 => new Response<Guid>() { Message = "The record was not found.", Success = false },
-            _ => new Response<Guid>() { Message = "Something went wrong, please try again later.", Success = false }
-        };
-    }
+                return new Response<Guid>() { Message = "Invalid data was submitted", ValidationErrors = ex.Response, Success = false };
+            }
+            else if (ex.StatusCode == 404)
+            {
+                return new Response<Guid>() { Message = "The record was not found.", Success = false };
+            }
+            else
+            {
+                return new Response<Guid>() { Message = "Something went wrong, please try again later.", Success = false };
+            }
+        }
 
-    protected async Task AddBearerToken()
-    {
-        if (await LocalStorage.ContainKeyAsync("token"))
-            Client.HttpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", await LocalStorage.GetItemAsync<string>("token"));
-    }
+        protected async Task AddBearerToken()
+        {
+            if (await _localStorage.ContainKeyAsync("token"))
+                _client.HttpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", await _localStorage.GetItemAsync<string>("token"));
+        }
 
+    }
 }

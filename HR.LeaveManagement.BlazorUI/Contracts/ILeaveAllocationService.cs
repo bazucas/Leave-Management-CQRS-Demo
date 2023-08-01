@@ -1,8 +1,9 @@
 ﻿using HR.LeaveManagement.BlazorUI.Services.Base;
 
-namespace HR.LeaveManagement.BlazorUI.Contracts;
-
-public interface ILeaveAllocationService
+namespace HR.LeaveManagement.BlazorUI.Contracts
 {
-    Task<Response<Guid>> CreateLeaveAllocations(int leaveTypeId);
+    public interface ILeaveAllocationService
+    {
+        Task<Response<Guid>> CreateLeaveAllocations(int leaveTypeId);
+    }
 }
